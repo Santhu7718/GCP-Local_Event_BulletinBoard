@@ -415,11 +415,26 @@ Each browser gets a unique `visitorId` stored in `localStorage`. The backend che
 
 ---
 
-## 👤 Author
+## 👥 Contributors
 
-**Santhu7718** — Solo Developer
-
-> Built end-to-end as a GCP-native full-stack project, from Firestore schema design to Cloud Run deployment with Vertex AI integration.
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/Santhu7718">
+        <img src="https://github.com/Santhu7718.png" width="80px" style="border-radius:50%"/><br/>
+        <strong>Santhu7718</strong>
+      </a><br/>
+      <sub>Full-Stack Developer · GCP Architect</sub>
+    </td>
+    <td align="center">
+      <a href="https://github.com/pavankumargurram04">
+        <img src="https://github.com/pavankumargurram04.png" width="80px" style="border-radius:50%"/><br/>
+        <strong>Gurram Pavan Kumar</strong>
+      </a><br/>
+      <sub>Full-Stack Developer · GCP Architect</sub>
+    </td>
+  </tr>
+</table>
 
 ---
 
