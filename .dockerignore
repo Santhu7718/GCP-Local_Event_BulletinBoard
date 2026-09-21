@@ -1,0 +1,16 @@
+.git
+.gitignore
+
+.env
+server/.env
+
+**/node_modules
+**/dist
+
+npm-debug.log*
+*.log
+
+docs
+scripts
+
+README.md

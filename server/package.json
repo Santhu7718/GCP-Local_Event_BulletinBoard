@@ -1,0 +1,24 @@
+{
+  "name": "local-event-board-server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local Event Bulletin Board backend",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "node --watch src/app.js"
+  },
+  "dependencies": {
+    "@google-cloud/bigquery": "^8.3.1",
+    "@google-cloud/firestore": "^7.11.6",
+    "@google-cloud/storage": "^7.17.0",
+    "@google/genai": "^2.18.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "firebase-admin": "^14.3.0",
+    "helmet": "^8.1.0",
+    "multer": "^2.0.2",
+    "zod": "^4.0.17"
+  }
+}

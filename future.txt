@@ -1,0 +1,31 @@
+15. One intentional limitation right now
+
+Our current RSVP implementation simply increments:
+
+12 → 13
+
+The frontend will later prevent the same browser from repeatedly clicking RSVP.
+
+But this is not yet secure enough for production.
+
+When we move to Firestore, we'll implement:
+
+events/{eventId}/rsvps/{visitorId}
+
+and use a Firestore transaction.
+
+Then:
+
+User RSVPs
+      ↓
+Does RSVP record exist?
+      |
+   ┌──┴──┐
+   |     |
+  YES    NO
+   |     |
+Reject   Create RSVP
+         ↓
+      increment
+
+That will give us proper duplicate RSVP protection.

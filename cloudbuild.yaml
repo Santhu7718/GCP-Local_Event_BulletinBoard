@@ -1,0 +1,55 @@
+steps:
+
+  # ============================================================
+  # PHASE 4 — BUILD DOCKER IMAGE
+  # ============================================================
+
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      - "build"
+      - "-t"
+      - "asia-south1-docker.pkg.dev/$PROJECT_ID/event-board-repo/local-event-board:phase4.1-rbac-auth"
+      - "--build-arg"
+      - "VITE_FIREBASE_API_KEY=${_VITE_FIREBASE_API_KEY}"
+      - "--build-arg"
+      - "VITE_FIREBASE_AUTH_DOMAIN=${_VITE_FIREBASE_AUTH_DOMAIN}"
+      - "--build-arg"
+      - "VITE_FIREBASE_PROJECT_ID=${_VITE_FIREBASE_PROJECT_ID}"
+      - "--build-arg"
+      - "VITE_FIREBASE_APP_ID=${_VITE_FIREBASE_APP_ID}"
+      - "."
+
+  # ============================================================
+  # PUSH IMAGE TO ARTIFACT REGISTRY
+  # ============================================================
+
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      - "push"
+      - "asia-south1-docker.pkg.dev/$PROJECT_ID/event-board-repo/local-event-board:phase4.1-rbac-auth"
+
+  # ============================================================
+  # DEPLOY TO CLOUD RUN
+  # ============================================================
+
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: "gcloud"
+    args:
+      - "run"
+      - "deploy"
+      - "local-event-board"
+      - "--image"
+      - "asia-south1-docker.pkg.dev/$PROJECT_ID/event-board-repo/local-event-board:phase4.1-rbac-auth"
+      - "--region"
+      - "asia-south1"
+      - "--platform"
+      - "managed"
+      - "--service-account"
+      - "signal-cloudrun@$PROJECT_ID.iam.gserviceaccount.com"
+      - "--allow-unauthenticated"
+
+images:
+  - "asia-south1-docker.pkg.dev/$PROJECT_ID/event-board-repo/local-event-board:phase4.1-rbac-auth"
+
+options:
+  logging: CLOUD_LOGGING_ONLY
