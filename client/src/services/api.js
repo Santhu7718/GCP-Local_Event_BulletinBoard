@@ -2,20 +2,7 @@ import {
     auth
 } from "../firebase";
 
-/*
-|--------------------------------------------------------------------------
-| API base URL
-|--------------------------------------------------------------------------
-|
-| Locally: Vite proxy forwards /api → http://localhost:8080 (see vite.config.js)
-| Production (Netlify/Vercel): set VITE_API_URL to your deployed backend URL
-|   e.g. VITE_API_URL=https://your-backend.railway.app
-|
-|--------------------------------------------------------------------------
-*/
-
-const API_BASE =
-    (import.meta.env.VITE_API_URL || "") + "/api";
+const API_BASE = "/api";
 
 
 /*
